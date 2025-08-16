@@ -1,6 +1,9 @@
 from enum import Enum
 
 
+IS_TEMPORARY = False
+
+
 MODEL_MAPPING = {
     "deepseek-v3": {"model": "deep_seek_v3", "support_functions": None},
     "deepseek-r1": {"model": "deep_seek", "support_functions": None},

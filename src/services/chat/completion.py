@@ -2,6 +2,7 @@ from typing import AsyncGenerator, Dict
 
 import httpx
 
+from src.const import IS_TEMPORARY
 from src.schemas.chat import YuanBaoChatCompletionRequest
 from src.services.chat.conversation import remove_conversation
 from src.utils.chat import process_response_stream
@@ -33,7 +34,7 @@ async def create_completion_stream(
         "agentId": chat_request.agent_id,
         "supportHint": 1,
         "version": "v2",
-        "isTemporary": True,
+        "isTemporary": IS_TEMPORARY,
         "chatModelId": chat_request.chat_model_id,
     }
     if chat_request.support_functions:
