@@ -2,6 +2,15 @@ from typing import Dict
 
 
 def generate_headers(request: dict, token: str) -> Dict[str, str]:
+     
+    token,hy_user = token.split(',')
+
+    agent_id = "naQivTmsDa"
+
+    request["hy_source"] = "web"
+    request["hy_user"] = hy_user
+    request["agent_id"] = agent_id
+      
     return {
         "Cookie": f"hy_source={request['hy_source']}; hy_user={request['hy_user']}; hy_token={token}",
         "Origin": "https://yuanbao.tencent.com",

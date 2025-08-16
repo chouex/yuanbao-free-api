@@ -6,18 +6,24 @@ from src.const import MODEL_MAPPING
 from src.schemas.common import Media
 
 
+class Content(BaseModel):
+    type: str
+    text: str
+
 class Message(BaseModel):
     role: str
-    content: str
+    content: List[Content] | str
 
 
 class ChatCompletionRequest(BaseModel):
     messages: List[Message]
     model: str
+    temperature: int
     agent_id: str
+    stream: bool
+    stream_options: dict
     chat_id: Optional[str] = None
     hy_source: str = "web"
-    hy_user: str
     should_remove_conversation: bool = False
     multimedia: List[Media] = []
 

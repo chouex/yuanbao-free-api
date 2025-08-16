@@ -15,6 +15,7 @@
 - 本项目仅限**学习研究用途**
 - 请严格遵守腾讯元宝的[使用条款](https://yuanbao.tencent.com/)
 - `hy_token` 有时效性，过期需重新获取
+- openai token 格式: "`hy_token`,`hy_user`"
 
 ## 🚀 快速开始
 

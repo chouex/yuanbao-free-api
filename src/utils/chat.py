@@ -31,6 +31,14 @@ async def process_response_stream(
     def _create_chunk(content: str, finish_reason: Optional[str] = None) -> str:
         choice_delta = ChoiceDelta(content=content)
         choice = Choice(delta=choice_delta, finish_reason=finish_reason)
+        try:
+            delta_content=json.loads(choice.delta.content)
+            if delta_content['type']=='text' and 'msg' in delta_content:
+                choice.delta.content=delta_content['msg']
+            else:
+                choice.delta.content=''
+        except:
+            pass
         chunk = ChatCompletionChunk(
             created=int(time.time()), model=model_id, choices=[choice]
         )
